@@ -10,6 +10,9 @@ Em desenvolvimento
 - MySQL
 - JPA/Hibernate
 
+## Time de Desenvolvedores
+- Carolina Friedrich Lobo D Avila
+  
 ## Objetivo do Software
 Este sistema permite o cadastro, visualização, edição e exclusão de livros. O usuário pode gerenciar os livros em sua biblioteca, com campos como título, autor, gênero, e ano de publicação.
 
