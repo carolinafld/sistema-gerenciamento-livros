@@ -1,9 +1,6 @@
 package com.gerenciamento.livros;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Livro {
@@ -13,16 +10,18 @@ public class Livro {
     
     private String titulo;
     private String autor;
-    private String isbn;
-
+    private String editora;
+    private int anoPublicacao;
+    
     public Livro() {
     }
-
-    public Livro(Long id, String titulo, String autor, String isbn) {
+    
+    public Livro(Long id, String titulo, String autor, String editora, int anoPublicacao) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
-        this.isbn = isbn;
+        this.editora = editora;
+        this.anoPublicacao = anoPublicacao;
     }
 
     // Getters e Setters
@@ -50,11 +49,19 @@ public class Livro {
         this.autor = autor;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getEditora() {
+        return editora;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(int anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
     }
 }
