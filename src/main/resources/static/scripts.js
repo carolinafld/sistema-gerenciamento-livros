@@ -1,54 +1,36 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Carregar livros na página de listagem
-    if (document.getElementById('livros-lista')) {
-        carregarLivros();
-    }
+document.addEventListener('DOMContentLoaded', function () {
+    // Função para adicionar validação ao formulário de adicionar livro
+    const formAdicionarLivro = document.querySelector('#form-adicionar-livro');
+    if (formAdicionarLivro) {
+        formAdicionarLivro.addEventListener('submit', function (event) {
+            const titulo = document.querySelector('#titulo').value.trim();
+            const autor = document.querySelector('#autor').value.trim();
+            const anoPublicacao = document.querySelector('#anoPublicacao').value.trim();
+            const genero = document.querySelector('#genero').value.trim();
 
-    // Se estivermos na página de adicionar livro
-    if (document.getElementById('form-adicionar-livro')) {
-        document.getElementById('form-adicionar-livro').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Obter valores dos campos do formulário
-            const titulo = document.getElementById('titulo').value.trim();
-            const autor = document.getElementById('autor').value.trim();
-            const anoPublicacao = document.getElementById('anoPublicacao').value.trim();
-            const genero = document.getElementById('genero').value.trim();
-
-            // Verificar se todos os campos estão preenchidos
-            if (!titulo || !autor || !anoPublicacao || !genero) {
-                alert('Todos os campos são obrigatórios.');
-                return;
+            // Validação simples para garantir que todos os campos foram preenchidos
+            if (titulo === '' || autor === '' || anoPublicacao === '' || genero === '') {
+                event.preventDefault();
+                alert('Por favor, preencha todos os campos!');
+                return false;
             }
 
-            // Criar objeto livro
-            const livro = { titulo, autor, anoPublicacao, genero };
-
-            // Salvar livro no localStorage
-            salvarLivro(livro);
-
-            // Redirecionar para a página de listagem de livros
-            window.location.href = 'listar-livros.html';
+            // Validação extra: verifica se o ano de publicação é um número válido
+            if (isNaN(anoPublicacao) || anoPublicacao.length !== 4) {
+                event.preventDefault();
+                alert('Por favor, insira um ano de publicação válido (quatro dígitos)!');
+                return false;
+            }
         });
     }
-});
 
-// Função para carregar livros do localStorage e exibi-los
-function carregarLivros() {
-    const livros = JSON.parse(localStorage.getItem('livros')) || [];
-    const listaLivros = document.getElementById('livros-lista');
-    listaLivros.innerHTML = ''; // Limpar lista antes de adicionar novos livros
-
-    livros.forEach(livro => {
-        const li = document.createElement('li');
-        li.textContent = `${livro.titulo} - ${livro.autor} (${livro.anoPublicacao}) - ${livro.genero}`;
-        listaLivros.appendChild(li);
+    // Função para confirmar exclusão de livro
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function (event) {
+            if (!confirm('Tem certeza de que deseja excluir este livro?')) {
+                event.preventDefault();
+            }
+        });
     });
-}
-
-// Função para salvar livro no localStorage
-function salvarLivro(livro) {
-    let livros = JSON.parse(localStorage.getItem('livros')) || [];
-    livros.push(livro);
-    localStorage.setItem('livros', JSON.stringify(livros));
-}
+});

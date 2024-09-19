@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Livros</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <header>
@@ -18,13 +18,28 @@
     </header>
     <main>
         <h2>Livros Cadastrados</h2>
-        <ul id="livros-lista">
-            <!-- Livros serão inseridos aqui pelo JavaScript -->
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ano de Publicação</th>
+                    <th>Gênero</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="livro : ${livros}">
+                    <td th:text="${livro.titulo}">Título do Livro</td>
+                    <td th:text="${livro.autor}">Autor</td>
+                    <td th:text="${livro.anoPublicacao}">Ano de Publicação</td>
+                    <td th:text="${livro.genero}">Gênero</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
     <footer>
         <p>&copy; 2024 Sistema de Gerenciamento de Livros</p>
     </footer>
-    <script src="/js/scripts.js"></script>
+    <script src="/scripts.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Sistema de Gerenciamento de Livros</name>
     <description>Sistema simples para cadastrar, editar e listar livros.</description>
-
+    
     <properties>
         <java.version>17</java.version>
         <start-class>com.gerenciamento.livros.SistemaDeGerenciamentoDeLivrosApplication</start-class>

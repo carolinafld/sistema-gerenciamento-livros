@@ -10,17 +10,17 @@ public class Livro {
     
     private String titulo;
     private String autor;
-    private String editora;
+    private String genero;
     private int anoPublicacao;
     
     public Livro() {
     }
     
-    public Livro(Long id, String titulo, String autor, String editora, int anoPublicacao) {
+    public Livro(Long id, String titulo, String autor, String genero, int anoPublicacao) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
-        this.editora = editora;
+        this.genero = genero;
         this.anoPublicacao = anoPublicacao;
     }
 
@@ -49,12 +49,12 @@ public class Livro {
         this.autor = autor;
     }
 
-    public String getEditora() {
-        return editora;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setEditora(String editora) {
-        this.editora = editora;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public int getAnoPublicacao() {
